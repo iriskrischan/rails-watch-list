@@ -1,0 +1,17 @@
+<h3>List title: <%= @list.name %> </h3>
+
+
+<%# add new bookmark entry %>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie %>
+  <%= f.button :submit %>
+<% end %>
+
+<%# show all bookmark entry %>
+
+<% @list.bookmarks.each do |marks| %>
+    <li><%= marks.comment %> for the movie <%= marks.movie.title %></li>
+<% end %>
+
+<%# delete bookmark entry %>
